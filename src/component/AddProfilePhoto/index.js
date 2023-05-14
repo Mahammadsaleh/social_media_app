@@ -1,5 +1,8 @@
 import Link from "next/link";
 import style from "./css/style.module.css";
+
+
+//import {Link as Linklink} from 'react-router-dom';
 function AddProfilePhoto() {
   return (
     <div>

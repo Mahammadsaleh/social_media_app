@@ -1,5 +1,28 @@
-import '@/styles/globals.css'
-
+import '@/styles/globals.css';
+import Navbar from "../component/Navbar/Navbar";
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  
+  return(
+    <>
+    <div style={
+      {
+        display:'flex',
+        
+      }
+    } >
+      <Navbar style={{
+       
+      }}/>
+      <div
+      style={{
+       alignItems:'center',
+      }}
+      >
+        <Component {...pageProps} />
+      </div>
+      
+    </div>
+      
+    </>    
+  );
 }

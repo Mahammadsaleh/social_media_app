@@ -1,0 +1,10 @@
+.text{
+    color: #555a64;
+    font-family: "Arial";
+    font-size: medium;
+    display: flex;
+    width: 500px;
+    margin-left: 10px;
+    line-height: 1.3em;
+    padding-top: 1em;
+}
