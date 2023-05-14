@@ -43,7 +43,7 @@ export async function getServerSideProps() {
   //   date: Date.now(),
   //   author:"-NVBCF_otC_hB1_HqB7C"
   // });
-  var postInfo = await getPosts("-NVBCF_otC_hB1_HqB7C", 3);
+  var postInfo = await getPosts("-NVBCF_otC_hB1_HqB7C", 4);
   var profileInfo = await getProfileInfo("-NVBCF_otC_hB1_HqB7C");
   //  console.log(post);
   console.log(postInfo);
