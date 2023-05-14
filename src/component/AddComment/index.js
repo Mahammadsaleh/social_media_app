@@ -1,10 +1,11 @@
+import style from "./css/style.module.css";
 import { FaRegCommentDots } from "@react-icons/all-files/fa/FaRegCommentDots";
-function AddComment() {
+function AddComment({commentCount}) {
   return (
-    <>
-      <FaRegCommentDots size={20} />
-      <div className="tweet-comment">123</div>
-    </>
+    <div className={style.comment}>
+      <FaRegCommentDots  style={{cursor: 'pointer',}} href="#" onClick={() => {console.log("clicked")}} size={20} />
+      <div className="tweet-comment">{commentCount}</div>
+    </div>
   );
 }
 

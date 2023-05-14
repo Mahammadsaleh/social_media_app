@@ -1,6 +1,7 @@
+import { post } from '@/lib/firebase';
 import style from './css/style.module.css';
-function AddBodyText() {
-    return ( <div className={style.tweetBodyText}>Body text goes here</div> );
+function AddBodyText({postContent}) {
+    return ( <div className={style.tweetBodyText}>{postContent}</div> );
 }
 
 export default AddBodyText;

@@ -1,12 +1,19 @@
 import style from "./css/style.module.css";
-function AddPhoto() {
-  return (
-    <img
-      className={style.tweetImage}
-      width="auto"
-      height={250}
-      src="https://leadergamer.com.tr/app/uploads/2022/10/demon-slayer.jpg"
-    ></img>
+function AddPhoto({ image }) {
+  let img;
+  if (image) {
+    img = (
+      <img
+        className={style.tweetImage}
+        width="auto"
+        height={200}
+        src={image}
+      ></img>
+    );
+  }
+  return (<>
+  {img}</>
+
   );
 }
 
