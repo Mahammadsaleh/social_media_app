@@ -1,0 +1,13 @@
+.dateicon{
+   
+    color: #2f3135;
+}
+.date{
+    color: #555a64;
+    font-family: "Arial";
+    display: flex;
+    padding: 1rem;
+}
+.datetext{
+    padding-left: 1em;
+}
