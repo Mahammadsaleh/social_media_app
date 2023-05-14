@@ -1,0 +1,13 @@
+.image{
+    z-index: 1;
+    position: absolute;
+    padding: 1em;
+    top: 0;
+    margin-top: 150px;
+
+}
+.image2{
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+}
