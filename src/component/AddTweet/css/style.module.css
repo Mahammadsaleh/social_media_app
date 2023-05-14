@@ -7,12 +7,15 @@
   display: flex;
   gap: 1rem;
   padding: 2rem;
-  justify-content: center;
   border: 1px solid #ccc;
+  justify-content: center;
   border-radius: 0;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   background-color: #fff;
+}
+.tweetBody{
+    width:80%;
 }
 .tweetBodyText {
   font-family: "Arial";
@@ -43,13 +46,13 @@
   width: auto;
   display: flex;
   justify-content: space-between;
-
   padding-bottom: 5px;
   gap: 1rem;
 }
 .tweetFooter {
   width: auto;
   display: flex;
+  justify-content: space-between;
   gap: 0.5rem;
   font-family: "Arial";
   font-style: normal;
@@ -58,33 +61,62 @@
   line-height: 22px;
   color: #555a64;
 }
+.tweetInput {
+  width: 100%;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.submitButton {
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #1987c8;
+}
+.fileInput {
+  display: none;
+}
+
+.fileInputIcon {
+  cursor: pointer;
+}
 @media (max-width: 575.98px) {
-  .tweet {
-    width: 80%;
+    .tweet {
+      width: 80%;
+    }
   }
-}
-
-@media (min-width: 576px) {
-  .tweet {
-    width: 60%;
+  
+  @media (min-width: 576px) {
+    .tweet {
+      width: 60%;
+    }
   }
-}
-
-@media (min-width: 768px) {
-
-  .tweet {
-    width: 50%;
+  
+  @media (min-width: 768px) {
+  
+    .tweet {
+      width: 50%;
+    }
   }
-}
-
-@media (min-width: 992px) {
-  .tweet {
-    width: 40%;
+  
+  @media (min-width: 992px) {
+    .tweet {
+      width: 40%;
+    }
   }
-}
-
-@media (min-width: 1200px) {
-  .tweet {
-    width: 30%;
+  
+  @media (min-width: 1200px) {
+    .tweet {
+      width: 30%;
+    }
   }
-}

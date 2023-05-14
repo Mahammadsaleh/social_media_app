@@ -7,25 +7,36 @@ import AddLike from "../AddLike";
 import AddAuthor from "../AddAuthor";
 import AddDate from "../AddDate";
 import AddBodyText from "../AddBodyText";
-function Tweet() {
+function Tweet({ post, profileInfo }) {
+  // var postInfo = post[0][1];
+  // console.log(postInfo);
+
   return (
-    <div className={style.main}>
-      <div className={style.tweet}>
-        <AddProfilePhoto />
-        <div className={style.tweetBody}>
-          <div className={style.tweetInfo}>
-            <AddAuthor />
-            <AddDate />
-          </div>
-          <AddBodyText />
-          <AddPhoto />
-          <div className={style.tweetFooter}>
-            <AddComment />
-            <AddLike />
-          </div>
-        </div>
-      </div>
-    </div>
+    <ul>
+      {post.map((tweet, index) => (
+        <li key={`index-${index}`}>
+          {
+            <div className={style.main}>
+              <div className={style.tweet}>
+                <AddProfilePhoto />
+                <div className={style.tweetBody}>
+                  <div className={style.tweetInfo}>
+                    <AddAuthor name={profileInfo.name} />
+                    <AddDate date={tweet[1].date} />
+                  </div>
+                  <AddBodyText postContent={tweet[1].content} />
+                  <AddPhoto image={tweet[1].image}/>
+                  <div className={style.tweetFooter}>
+                    <AddComment commentCount={post.length} />
+                    <AddLike likeCount={tweet[1].likes} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </li>
+      ))}
+    </ul>
   );
 }
 

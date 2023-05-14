@@ -127,3 +127,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.main {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.tweet {
+  display: flex;
+  gap: 1rem;
+  padding: 20px;
+
+  justify-content: center;
+
+  border-radius: 0;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+}
