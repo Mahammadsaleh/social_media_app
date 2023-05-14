@@ -6,10 +6,13 @@ export default function App({ Component, pageProps }) {
     <>
     <div style={
       {
-        display:'flex'
+        display:'flex',
+        
       }
-    }>
-      <Navbar />
+    } >
+      <Navbar style={{
+       
+      }}/>
       <div
       style={{
        alignItems:'center',

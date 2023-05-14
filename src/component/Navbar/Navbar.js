@@ -6,9 +6,9 @@ import NavItem from "../NavItem";
 import style from "./css/style.module.css";
 
 const MENU_LIST = [
-  { text: "Home", href: "/" },
-  { text: "About Us", href: "../" },
-  { text: "Contact", href: "/profile" },
+  { text: "Home", href: "../" },
+  { text: "Profile", href: "/profile" },
+  { text: "Sign Out", href: "/profile" },
 ];
 function Navbar  ()  {
   const [navActive, setNavActive] = useState(null);
@@ -25,6 +25,7 @@ function Navbar  ()  {
         <div
           onClick={() => setNavActive(!navActive)}
           className={`nav__menu-bar`}
+          
         >
           <div></div>
           <div></div>
