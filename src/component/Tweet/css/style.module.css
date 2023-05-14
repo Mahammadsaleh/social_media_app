@@ -2,6 +2,9 @@
   display: flex;
   justify-content: center;
 }
+.tweetBody{
+  width:80%;
+}
 .tweet {
   width: 30%;
   display: flex;
