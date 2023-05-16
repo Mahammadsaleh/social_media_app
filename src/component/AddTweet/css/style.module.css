@@ -1,13 +1,10 @@
-.main {
-  display: flex;
-  justify-content: center;
-}
+
 .tweet {
-  width: 30%;
+  width: 100%;
   display: flex;
   gap: 1rem;
   padding: 2rem;
-  border: 1px solid #ccc;
+  border: 1px solid #eeeeee;
   justify-content: center;
   border-radius: 0;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
@@ -23,7 +20,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  color: #555a64;
+  color: #7d8188;
 }
 
 .tweetInfo {
@@ -91,32 +88,32 @@
   cursor: pointer;
 }
 @media (max-width: 575.98px) {
-    .tweet {
-      width: 80%;
-    }
+  .tweet {
+    width: 100%;
   }
-  
-  @media (min-width: 576px) {
-    .tweet {
-      width: 60%;
-    }
+}
+
+@media (min-width: 576px) {
+  .tweet {
+    width: 100%;
   }
-  
-  @media (min-width: 768px) {
-  
-    .tweet {
-      width: 50%;
-    }
+}
+
+@media (min-width: 768px) {
+
+  .tweet {
+    width: 100%;
   }
-  
-  @media (min-width: 992px) {
-    .tweet {
-      width: 40%;
-    }
+}
+
+@media (min-width: 992px) {
+  .tweet {
+    width: 50%;
   }
-  
-  @media (min-width: 1200px) {
-    .tweet {
-      width: 30%;
-    }
+}
+
+@media (min-width: 1200px) {
+  .tweet {
+    width: 40%;
   }
+}

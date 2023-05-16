@@ -27,7 +27,7 @@ function Tweet({ post, profileInfo }) {
                   <AddBodyText postContent={tweet[1].content} />
                   <AddPhoto image={tweet[1].image}/>
                   <div className={style.tweetFooter}>
-                    <AddComment profileInfo={profileInfo} commentCount={post.length} />
+                    <AddComment profileInfo={profileInfo} postAuthor={tweet[1].author} commentCount={post.length} />
                     <AddLike likeId={post[index][0]} likeCount={tweet[1].likes} />
                   </div>
                 </div>

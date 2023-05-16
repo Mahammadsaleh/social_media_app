@@ -9,7 +9,7 @@ import AddJoinedDate from "../AddJoinedDate";
 import Follower from "../Follower";
 import Following from "../Following";
 import BackToHomepage from "../BackToHomepage";
-function AddProfile(){
+function AddProfile({post,profileInfo}){
 
     return (
         <div className={style.container}>
@@ -18,9 +18,9 @@ function AddProfile(){
                 <AddBgImg />
                 <ProfileImg /> 
             </div>
-            <AddUsername />
-            <AddBio />
-            <AddJoinedDate />
+            <AddUsername profileInfo={profileInfo} />
+            <AddBio  profileInfo={profileInfo} />
+            <AddJoinedDate  profileInfo={profileInfo}/>
             <div className={style.follow}>
                 <Follower /> 
                 <Following />

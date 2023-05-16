@@ -9,7 +9,7 @@ function AddBgImg() {
       
       <img
         src="https://assets.teenvogue.com/photos/5beb34096029df2db3813b6d/4:3/w_1528,h_1146,c_limit/tout.jpg" 
-        width={530}
+        className={style.bgImg}
       />
      
     </div>

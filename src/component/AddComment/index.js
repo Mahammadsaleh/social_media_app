@@ -1,7 +1,7 @@
 import style from "./css/style.module.css";
 import { FaRegCommentDots } from "@react-icons/all-files/fa/FaRegCommentDots";
 import React, { useEffect, useRef, useState } from "react";
-function AddComment({ commentCount,profileInfo }) {
+function AddComment({ commentCount,profileInfo,postAuthor }) {
   return (
     <>
       <div className={style.comment}>
@@ -16,7 +16,7 @@ function AddComment({ commentCount,profileInfo }) {
         <div className="tweet-comment">{commentCount}</div>
       </div>
       
-      {/* <Comment profileInfo={profileInfo} /> */}
+      {/* <Comment profileInfo={profileInfo} postAuthor={postAuthor} /> */}
     </>
   );
 }

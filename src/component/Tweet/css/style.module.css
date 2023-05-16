@@ -1,20 +1,19 @@
 .main {
   display: flex;
-  justify-content: center;
+
 }
 .tweetBody{
   width:80%;
 }
 .tweet {
-  width: 30%;
+ width: 40%;
   display: flex;
   gap: 1rem;
   padding: 2rem;
   justify-content: center;
-  border: 1px solid #ccc;
+  border: 1px solid #eeeeee;
   border-radius: 0;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
   background-color: #fff;
 }
 .tweetBodyText {
@@ -23,7 +22,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  color: #555a64;
+  color: #dbe2ee;
 }
 
 .tweetInfo {
@@ -63,31 +62,31 @@
 }
 @media (max-width: 575.98px) {
   .tweet {
-    width: 80%;
+    width: 100%;
   }
 }
 
 @media (min-width: 576px) {
   .tweet {
-    width: 60%;
+    width: 100%;
   }
 }
 
 @media (min-width: 768px) {
 
   .tweet {
-    width: 50%;
+    width: 100%;
   }
 }
 
 @media (min-width: 992px) {
   .tweet {
-    width: 40%;
+    width: 50%;
   }
 }
 
 @media (min-width: 1200px) {
   .tweet {
-    width: 30%;
+    width: 40%;
   }
 }

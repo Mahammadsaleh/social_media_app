@@ -15,14 +15,48 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getDatabase(app);
 
-export async function signUp({ name, email, password, bio }) {
-  const newKey = push(ref(db, "/users")).key;
-  await set(ref(db, "/users/" + newKey), {
-    name,
-    email,
-    password,
-    bio,
+export async function signUp({ name, email ,password}) {
+  const newUserKey = push(child(ref(db), '/users')).key;
+
+  const data = await get(ref(db, '/users'));
+  if (!data.val()) {
+    await set(ref(db, '/users/' + newUserKey), {
+      name,
+      email,
+      password,
+      bio: '',
+      followers: [],
+      following: [],
+      posts: [],
+    });
+
+    return;
+  }
+
+  const users = Object.entries(data.val());
+
+  const userEmails = [];
+
+  users.map((u) => {
+    const [key, user] = u;
+    userEmails.push(user.email);
+    if (user.email === email) {
+      return;
+    }
   });
+
+  if (!userEmails.includes(email)) {
+    await set(ref(db, '/users/' + newUserKey), {
+      name,
+      email,
+      password,
+      bio: '',
+      followers: [],
+      following: [],
+      posts: [],
+    });
+    Cookies.set('username', newUserKey);
+  }
 }
 
 export async function login({ email, password }) {

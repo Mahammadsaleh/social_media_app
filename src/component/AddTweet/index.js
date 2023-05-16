@@ -22,7 +22,7 @@ import AddTweetInput from "../AddTweetInput";
 import { FcLikePlaceholder } from "@react-icons/all-files/fc/FcLikePlaceholder";
 import { GoFileMedia } from "@react-icons/all-files/go/GoFileMedia";
 
-function AddTweet({ profileInfo }) {
+function AddTweet({ profileInfo,className  }) {
   const [img, setImg] = useState("");
 
   const [input, setInput] = useState("");
@@ -42,7 +42,7 @@ function AddTweet({ profileInfo }) {
         image: img,
       });
     }
-  }, [input]);
+  });
 
   const readFile = (e) => {
     if (!e.target.files.length) {
@@ -58,8 +58,8 @@ function AddTweet({ profileInfo }) {
     };
   };
   return (
-    <div className={style.main}>
-      <div className={style.tweet}>
+  
+      <div className={`${style.tweet} ${className}`}>
         <AddProfilePhoto />
         <div className={style.tweetBody}>
           <div className={style.tweetInfo}>
@@ -86,7 +86,7 @@ function AddTweet({ profileInfo }) {
           </div>
         </div>
       </div>
-    </div>
+
   );
 }
 

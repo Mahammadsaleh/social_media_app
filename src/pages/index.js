@@ -25,15 +25,7 @@ export default function Home({ post, profileInfo }) {
       <AddTweet post={post} profileInfo={profileInfo} />
       <Tweet post={post} profileInfo={profileInfo} />
      
-      <div className="main">
-        <Popup
-          className="tweet"
-          trigger={<button> Trigger</button>}
-          position=" center"
-        >
-          <Tweet post={post} profileInfo={profileInfo} />
-        </Popup>
-      </div>
+     
     </>
   );
 }
@@ -43,7 +35,7 @@ export async function getServerSideProps() {
   //   date: Date.now(),
   //   author:"-NVBCF_otC_hB1_HqB7C"
   // });
-  var postInfo = await getPosts("-NVBCF_otC_hB1_HqB7C", 4);
+  var postInfo = await getPosts("-NVBCF_otC_hB1_HqB7C", 5);
   var profileInfo = await getProfileInfo("-NVBCF_otC_hB1_HqB7C");
   //  console.log(post);
   console.log(postInfo);

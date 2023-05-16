@@ -1,4 +1,8 @@
-function Comment() {
+import style from "./css/style.module.css";
+import { FaRegCommentDots } from "@react-icons/all-files/fa/FaRegCommentDots";
+import React, { useEffect, useRef, useState } from "react";
+import { comment } from "@/lib/firebase";
+function Comment({ profileInfo, postAuthor }) {
   const [img, setImg] = useState("");
 
   const [input, setInput] = useState("");
@@ -11,12 +15,12 @@ function Comment() {
 
   useEffect(() => {
     if (input != "") {
-        //comment
-      post({
+      //comment
+      comment({
         content: input,
         date: Date.now(),
+        postid: postAuthor,
         author: "-NVBCF_otC_hB1_HqB7C",
-        image: img,
       });
     }
   }, [input]);

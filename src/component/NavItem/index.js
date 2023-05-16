@@ -6,9 +6,12 @@ function NavItem ({ text, href, active }) {
     <Link href={href} className={style.navLink}
     style={
       {
+        display:"flex",
+        alignItems: 'center',
+        justifyContent: 'center',
         textDecoration: 'none',
-        padding:'150px',
-        lineHeight: '5em',
+        padding:'10px',
+        
        
       }
     }>

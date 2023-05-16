@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html,
 body,
 div,
@@ -128,19 +127,18 @@ table {
   border-spacing: 0;
 }
 .main {
-  margin: 1rem;
+  margin: 2rem;
   display: flex;
   justify-content: center;
 }
-.tweet {
+
+.nav {
   display: flex;
-  gap: 1rem;
-  padding: 20px;
-
-  justify-content: center;
-
-  border-radius: 0;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  background-color: #fff;
 }
+.page {
+
+  align-items: "center";
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
