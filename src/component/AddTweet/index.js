@@ -32,13 +32,15 @@ function AddTweet({ profileInfo,className  }) {
     setInput(inputRef.current.value);
     inputRef.current.value = "";
   };
-
+  
   useEffect(() => {
+    const user = window?.localStorage?.getItem("user");
+    console.log(user);
     if (input != "") {
       post({
         content: input,
         date: Date.now(),
-        author: "-NVBCF_otC_hB1_HqB7C",
+        author: user,
         image: img,
       });
     }

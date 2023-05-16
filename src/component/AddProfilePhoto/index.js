@@ -9,7 +9,7 @@ function AddProfilePhoto() {
       <Link href="./profile">
         <img
           className={style.authorImage}
-          src="https://geekybytes.net/wp-content/uploads/2022/07/Tanjiro-Kamado-PFP-7.jpeg"
+          src="https://www.abka.com.tr/app/default/assets/vendor/visiosoft/store-module/resources/images/store-detail/no-user.png?v=1655397974"
           width={50}
           height={50}
           alt="Picture of the author"

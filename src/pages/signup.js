@@ -1,19 +1,31 @@
 import { useCallback, useState } from "react";
+import { signUp } from "@/lib/firebase";
+import Link from "next/link";
+import { useRouter } from "next/router";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const router = useRouter();
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      console.log(email, password, name);
+      if(!email || !password || !name) return alert("Please fill all the fields")
+        router.push("./signin");
+      // signUp(email, password, name)
+      //   .then(() => {
+      //     alert("Successfully Signed Up");
+      //   }
+      signUp({ email: email, password: password, name: name }).then(() => {
+        alert("Successfully Signed Up");
+      });
     },
     [email, password, name]
   );
   return (
     <>
       {" "}
-      <div className="max-w-d  mx-auto py-12  ">
+      <div className="max-w-d  mx-auto py-4  ">
         <h1 className="text-2xl py-4">Create New Account</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-96">
           <input
@@ -39,6 +51,7 @@ function SignUp() {
             value="Sign In"
             className="p-4 bg-green-400 rounded-md "
           ></input>
+          <Link href="./signin" className="text-blue-500">Already have an account? Sign In</Link>
         </form>
       </div>
     </>

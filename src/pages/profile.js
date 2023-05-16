@@ -26,14 +26,16 @@ export default function Profile({ post, profileInfo }) {
     </>
   );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   // await post({
   //   content: "Hello",
   //   date: Date.now(),
   //   author:"-NVBCF_otC_hB1_HqB7C"
   // });
-  var postInfo = await getPosts("-NVBCF_otC_hB1_HqB7C", 5);
-  var profileInfo = await getProfileInfo("-NVBCF_otC_hB1_HqB7C");
+  const user = context.req.cookies["user"]
+  // const user = window?.localStorage?.getItem("user");
+  var postInfo = await getPosts(user, 10);
+  var profileInfo = await getProfileInfo(user);
   //  console.log(post);
   console.log(postInfo);
   return {

@@ -10,16 +10,24 @@ import "reactjs-popup/dist/index.css";
 import AddTweet from "../AddTweet";
 import "./css/style.module.css";
 import { green } from "@mui/material/colors";
+import { FaHome }  from "react-icons/fa";
+import {FaUserAlt}  from "react-icons/fa";
+import {RiLogoutBoxFill}  from "react-icons/ri";
+
 const MENU_LIST = [
   { text: "Home", href: "../" },
-  { text: "Profile", href: "/profile" },
-  { text: "Sign Out", href: "/profile" },
+  
 ];
-
+const MENU_LIST2 = [
+  { text: "Profile", href: "/profile" },
+]
+const MENU_LIST3 = [
+  { text: "Sign Out", href: "/signin" },
+]
 function Navbar({ profileInfo, post }) {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
-
+  const deleUser = () => {window?.localStorage?.removeItem("user"); }
   return (
     <header>
       <nav className={style.nav}>
@@ -34,7 +42,9 @@ function Navbar({ profileInfo, post }) {
           <div></div>
           <div></div>
         </div>
-        <div className={`${navActive ? "active" : ""} nav__menu-list`}>
+        <div className={`${navActive ? "active" : ""} nav__menu-list`}
+         
+        >
           {MENU_LIST.map((menu, idx) => (
             <div
               onClick={() => {
@@ -42,7 +52,39 @@ function Navbar({ profileInfo, post }) {
                 setNavActive(false);
               }}
               key={menu.text}
+              style={{ display: 'flex'}}
             >
+              
+              
+              <FaHome style={{marginTop: '42px', marginLeft:'55px'}}/>
+              <NavItem active={activeIdx === idx} {...menu}   />
+            </div>
+          ))}
+          {MENU_LIST2.map((menu, idx) => (
+            <div
+              onClick={() => {
+                setActiveIdx(idx);
+                setNavActive(false);
+                
+              }}
+              key={menu.text}
+              style={{ display: 'flex'}}
+            >
+              <FaUserAlt  style={{marginTop: '42px', marginLeft:'55px'}} />
+              <NavItem active={activeIdx === idx} {...menu} />
+            </div>
+          ))}
+          {MENU_LIST3.map((menu, idx) => (
+            <div
+              onClick={() => {
+                setActiveIdx(idx);
+                setNavActive(false);
+                deleUser();
+              }}
+              key={menu.text}
+              style={{ display: 'flex'}}
+            >
+              <RiLogoutBoxFill style={{marginTop: '42px', marginLeft:'45px'}} />
               <NavItem active={activeIdx === idx} {...menu} />
             </div>
           ))}
@@ -68,14 +110,16 @@ function Navbar({ profileInfo, post }) {
 }
 
 export default Navbar;
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   // await post({
   //   content: "Hello",
   //   date: Date.now(),
   //   author:"-NVBCF_otC_hB1_HqB7C"
   // });
-  var postInfo = await getPosts("-NVBCF_otC_hB1_HqB7C", 4);
-  var profileInfo = await getProfileInfo("-NVBCF_otC_hB1_HqB7C");
+  const user = context.req.cookies["user"]
+  // const user = window?.localStorage?.getItem("user");
+  var postInfo = await getPosts(user, 4);
+  var profileInfo = await getProfileInfo(user);
   //  console.log(post);
   console.log(postInfo);
   return {

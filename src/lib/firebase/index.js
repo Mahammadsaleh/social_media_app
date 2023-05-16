@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, child, set, get } from "firebase/database";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxQFQXnu4IKWXoO7BZap7kGSHtZSKqWlM",
@@ -15,16 +17,16 @@ const app = initializeApp(firebaseConfig);
 
 export const db = getDatabase(app);
 
-export async function signUp({ name, email ,password}) {
-  const newUserKey = push(child(ref(db), '/users')).key;
+export async function signUp({ name, email, password }) {
+  const newUserKey = push(child(ref(db), "/users")).key;
 
-  const data = await get(ref(db, '/users'));
+  const data = await get(ref(db, "/users"));
   if (!data.val()) {
-    await set(ref(db, '/users/' + newUserKey), {
+    await set(ref(db, "/users/" + newUserKey), {
       name,
       email,
       password,
-      bio: '',
+      bio: "",
       followers: [],
       following: [],
       posts: [],
@@ -46,33 +48,45 @@ export async function signUp({ name, email ,password}) {
   });
 
   if (!userEmails.includes(email)) {
-    await set(ref(db, '/users/' + newUserKey), {
+    await set(ref(db, "/users/" + newUserKey), {
       name,
       email,
       password,
-      bio: '',
+      bio: "",
       followers: [],
       following: [],
       posts: [],
     });
-    Cookies.set('username', newUserKey);
+    Cookies.set("user", newUserKey);
   }
 }
 
 export async function login({ email, password }) {
-  const snapshot = await get(ref(db, "/users"));
-  const users = snapshot.val();
+  let snapshot = await get(ref(db, `/users`));
+  var flag = true;
+  const users = Object.entries(snapshot.val());
+  console.log(users);
 
-  for (let [key, user] of Object.entries(users)) {
-    if (user.email == email && user.password == password) {
-      return key;
+  users.map((u) => {
+    const [key, user] = u;
+
+    if (user.email === email && user.password === password) {
+      console.log(key);
+      localStorage.setItem("user", key);
+      Cookies.set("user", key);
+      document.cookie = `user=${key}`;
+      flag = false;
+      return (window.location.href = "./");
+    } else {
+      if (flag) {
+        return alert("Login Failed");
+      
+      }
     }
-  }
-
-  return false;
+  });
 }
 
-export async function post({ content, date, author,image="" }) {
+export async function post({ content, date, author, image = "" }) {
   const newKey = push(ref(db, "/posts")).key;
   await set(ref(db, "/posts/" + newKey), {
     content,
@@ -205,7 +219,18 @@ export async function getPosts(authorId, limit = -1) {
 
   return posts;
 }
+export async function getAllPosts(time,limit = -1) {
+  const snapshot = await get(ref(db, '/posts'));
+  let posts = Object.entries(snapshot.val());
 
+  posts = posts.filter(([key, post]) => post.date > 1683918031434);
+
+  if (limit > -1) {
+    return posts.slice(0, limit);
+  }
+
+  return posts;
+}
 export async function getComments(postId, limit = -1) {
   const snapshot = await get(ref(db, "/comments"));
   let comments = Object.entries(snapshot.val());
