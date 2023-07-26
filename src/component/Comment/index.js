@@ -2,6 +2,8 @@ import style from "./css/style.module.css";
 import { FaRegCommentDots } from "@react-icons/all-files/fa/FaRegCommentDots";
 import React, { useEffect, useRef, useState } from "react";
 import { comment } from "@/lib/firebase";
+import AddProfilePhoto from "../AddProfilePhoto";
+
 function Comment({ profileInfo, postAuthor }) {
   const [img, setImg] = useState("");
 
