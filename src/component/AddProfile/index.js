@@ -111,7 +111,7 @@ function AddProfile({ post, profileInfo }) {
       <div className={style.follow}>
         <Follower />
         <Following />
-        <button
+        {/* <button
           className={style.button}
           onClick={() => setIsOpenModal(!isOpenModal)}
         >
@@ -122,10 +122,10 @@ function AddProfile({ post, profileInfo }) {
             callback={callbackforModal}
             Icon={CloseIcon}
             ButtonText="Save"
-          >
+        
             <EditProfileInfo />
           </Modal>
-        </button>
+        </button> */}
       </div>
     </div>
   );
