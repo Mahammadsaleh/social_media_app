@@ -71,19 +71,18 @@ export async function login({ email, password }) {
     const [key, user] = u;
 
     if (user.email === email && user.password === password) {
-      console.log(key);
       localStorage.setItem("user", key);
       Cookies.set("user", key);
       document.cookie = `user=${key}`;
       flag = false;
+      alert("Logged in successfully");
       return (window.location.href = "./");
-    } else {
-      if (flag) {
-        return alert("Login Failed");
-      
-      }
     }
+    return;
   });
+  if (flag) {
+    alert("Wrong credentials");
+  }
 }
 
 export async function post({ content, date, author, image = "" }) {
@@ -209,7 +208,7 @@ export async function getProfileInfo(userId) {
 
 export async function getPosts(authorId, limit = -1) {
   const snapshot = await get(ref(db, "/posts"));
-  let posts = Object.entries(snapshot.val());
+  let posts = Object?.entries(snapshot.val());
 
   posts = posts.filter(([key, post]) => post.author == authorId);
 
@@ -219,21 +218,28 @@ export async function getPosts(authorId, limit = -1) {
 
   return posts;
 }
-export async function getAllPosts(time,limit = -1) {
-  const snapshot = await get(ref(db, '/posts'));
-  let posts = Object.entries(snapshot.val());
-
-  posts = posts.filter(([key, post]) => post.date > 1683918031434);
+export async function getAllPostsWithUser(time, limit = -1,authorId=null) {
+  const usersSnapshot = await get(ref(db, "/users"));
+  const users = usersSnapshot.val();
+  const postsSnapshot = await get(ref(db, "/posts"));
+  const posts = Object.entries(postsSnapshot.val()).map(([key, post]) => {
+    const user = users[post.author];
+    return { key, ...post, name: user ? user.name : "" };
+  });
+  var filteredPosts = Object.entries(posts).filter(([key, post]) => post.date >> time);
+  if(authorId){
+     filteredPosts = filteredPosts.filter(([key, post]) => post.author == authorId);
+  }
+ 
 
   if (limit > -1) {
-    return posts.slice(0, limit);
+    return filteredPosts.slice(0, limit).map(([key, post]) => post);
   }
-
-  return posts;
+  return filteredPosts.map(([key, post]) => post);
 }
 export async function getComments(postId, limit = -1) {
   const snapshot = await get(ref(db, "/comments"));
-  let comments = Object.entries(snapshot.val());
+  let comments = Object?.entries(snapshot.val());
 
   comments = comments.filter(([key, comment]) => comment.postid == postId);
 

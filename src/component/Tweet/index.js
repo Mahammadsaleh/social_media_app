@@ -8,7 +8,9 @@ import AddAuthor from "../AddAuthor";
 import AddDate from "../AddDate";
 import AddBodyText from "../AddBodyText";
 function Tweet({ post, profileInfo }) {
-  // var postInfo = post[0][1];
+  
+  console.log(post);
+  console.log(post[0]);
   // console.log(postInfo);
 
   return (
@@ -18,17 +20,17 @@ function Tweet({ post, profileInfo }) {
           {
             <div className={style.main}>
               <div className={style.tweet}>
-                <AddProfilePhoto />
+                <AddProfilePhoto /> 
                 <div className={style.tweetBody}>
                   <div className={style.tweetInfo}>
-                    <AddAuthor name={profileInfo.name} />
-                    <AddDate date={tweet[1].date} />
+                    <AddAuthor name={tweet?.name} />  
+                    <AddDate date={tweet.date} />
                   </div>
-                  <AddBodyText postContent={tweet[1].content} />
-                  <AddPhoto image={tweet[1].image}/>
+                  <AddBodyText postContent={tweet.content} />
+                  <AddPhoto image={tweet.image}/>
                   <div className={style.tweetFooter}>
-                    <AddComment profileInfo={profileInfo} postAuthor={tweet[1].author} commentCount={post.length} />
-                    <AddLike likeId={post[index][0]} likeCount={tweet[1].likes} />
+                    <AddComment profileInfo={profileInfo} postAuthor={tweet.author} commentCount={post.length} />
+                    <AddLike likeId={tweet.key} likeCount={tweet.likes} />
                   </div>
                 </div>
               </div>
