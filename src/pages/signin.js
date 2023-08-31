@@ -19,7 +19,7 @@ function SignIn() {
       e.preventDefault();
       if (!email || !password) return;
       login({ email: email, password: password }).then(() => {
-        // router.push("./");
+        router.push("./");
       });
     },
     [email, password]

@@ -6,7 +6,7 @@
   width:80%;
 }
 .tweet {
- width: 40%;
+ width: 50%;
   display: flex;
   gap: 1rem;
   padding: 2rem;
@@ -87,6 +87,6 @@
 
 @media (min-width: 1200px) {
   .tweet {
-    width: 40%;
+    width: 50%;
   }
 }

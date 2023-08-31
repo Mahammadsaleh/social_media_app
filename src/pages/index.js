@@ -5,7 +5,7 @@ import { Popup } from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import {
   follow,
-  getAllPosts,
+  getAllPostsWithUser,
   getProfileInfo,
   getPosts,
   likePost,
@@ -41,10 +41,10 @@ export async function getServerSideProps(context) {
   
   const user = context.req.cookies["user"];
   // const user = window?.localStorage?.getItem("user");
-  var postInfo = await getAllPosts(exactDateTimestamp,10);;
+  var postInfo = await getAllPostsWithUser(exactDateTimestamp,10);
   var profileInfo = await getProfileInfo(user);
   //  console.log(post);
-  console.log(postInfo);
+  console.log("postinfo"+postInfo);
   return {
     props: {
       post: postInfo,

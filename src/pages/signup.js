@@ -24,7 +24,6 @@ function SignUp() {
   );
   return (
     <>
-      {" "}
       <div className="max-w-d  mx-auto py-4  ">
         <h1 className="text-2xl py-4">Create New Account</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-96">
