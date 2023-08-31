@@ -1,0 +1,15 @@
+.follower{
+    display: flex;
+    padding-left: 1rem;
+   
+    font-family: "Arial";
+}
+.followernum{
+    color: #171717;
+    font-weight: bolder;
+}
+.followertext{
+    color: #555a64;
+    padding-left: 1rem;
+    
+}

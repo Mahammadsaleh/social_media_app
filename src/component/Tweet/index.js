@@ -23,13 +23,8 @@ function Tweet({ post, profileInfo }) {
                 <AddProfilePhoto /> 
                 <div className={style.tweetBody}>
                   <div className={style.tweetInfo}>
-
-                    {/* <AddAuthor name={profileInfo.name} /> */}
-                    <AddDate date={tweet[1].date} />
-
                     <AddAuthor name={tweet?.name} />  
                     <AddDate date={tweet.date} />
-
                   </div>
                   <AddBodyText postContent={tweet.content} />
                   <AddPhoto image={tweet.image}/>
